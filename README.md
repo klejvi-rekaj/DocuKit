@@ -44,6 +44,7 @@ It's designed to be focused: no noise, just your documents and your questions.
 ---
 
 
+
 ## Features
 
 - **Notebook workspaces** — organize your study sessions by topic or project
@@ -82,9 +83,8 @@ It's designed to be focused: no noise, just your documents and your questions.
 ### AI / Retrieval
 | Tool | Role |
 |---|---|
-| Local generation model | Answer generation |
-| Gemini Embeddings *(optional)* | Embedding provider |
-| Local embedding fallback | Default embeddings |
+| Qwen (local) | Answer generation |
+| Local embeddings | Embedding provider |
 | FAISS | Vector similarity search |
 
 ---
@@ -96,7 +96,7 @@ PDF upload → text extraction → chunking → embeddings → FAISS index
                                                               ↓
                                               user query → retrieval
                                                               ↓
-                                            context + query → LLM → streamed response
+                                            context + query → Qwen → streamed response
                                                               ↓
                                                saved to DB (chat / notes)
 ```
@@ -110,6 +110,7 @@ PDF upload → text extraction → chunking → embeddings → FAISS index
 - Node.js 18+
 - Python 3.10+
 - PostgreSQL instance
+- Qwen model (running locally)
 
 ---
 
@@ -147,7 +148,6 @@ Edit `backend/.env` and fill in:
 | `SESSION_COOKIE_NAME` | Cookie name for sessions |
 | `SESSION_COOKIE_SECURE` | Set `true` in production |
 | `SESSION_COOKIE_SAMESITE` | Cookie policy (`lax` / `strict`) |
-| `GEMINI_API_KEY` | Optional — enables Gemini embeddings |
 
 See [`backend/.env.example`](backend/.env.example) for the full list.
 
@@ -202,7 +202,7 @@ DocuKit/
 ## Limitations
 
 - PDF-only document support (no Word, Markdown, etc.)
-- Local generation model is lightweight; accuracy may vary
+- Local Qwen model — accuracy depends on the model size you run
 
 ---
 
@@ -221,5 +221,5 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 <div align="center">
-  <sub>Built with FastAPI, Next.js, and FAISS · Made for focused document work</sub>
+  <sub>Built with FastAPI, Next.js, FAISS, and Qwen · Made for focused document work</sub>
 </div>
