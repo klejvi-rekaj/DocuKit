@@ -117,8 +117,8 @@ PDF upload → text extraction → chunking → embeddings → FAISS index
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
+git clone https://github.com/klejvi-rekaj/DocuKit.git
+cd DocuKit
 ```
 
 ### 2. Frontend setup
